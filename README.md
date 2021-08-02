@@ -16,7 +16,7 @@ I often wake up in the middle of the night and need to go pee but i can't turn o
 ## Material
 
 |  Material             | What |  Link  | Price |
-|-----------------------|--------|-------|
+|-----------------------|--------|-------|------|
 | LoPy4                 | Computer to handle sensor | [:link:](https://pycom.io/product/lopy4/) | 380 kr |
 | Expansion Board 3.1   | Expansion board to Lopy4 so we can connect the sensor easily | [:link:](https://pycom.io/product/expansion-board-3-0/) | 170 kr |
 | Jumpwire              | Wire between lopy4 and sensor | [:link:](https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/delbar-kopplingskabel-40-pol-15-cm-hona-hona-p87075) | 80 kr |
