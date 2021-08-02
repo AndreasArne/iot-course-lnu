@@ -15,27 +15,25 @@ I often wake up in the middle of the night and need to go pee but i can't turn o
 
 ## Material
 
-|  Material             |  Link  | Price |
+|  Material             | What |  Link  | Price |
 |-----------------------|--------|-------|
-| LoPy4                 | [:link:](https://pycom.io/product/lopy4/) | 380 kr |
-| Expansion Board 3.1   | [:link:](https://pycom.io/product/expansion-board-3-0/) | 170 kr |
-| Jumpwire              | [:link:](https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/delbar-kopplingskabel-40-pol-15-cm-hona-hona-p87075) | 80 kr |
-| RIP Motion sensors    | [:link:](https://www.kjell.com/se/produkter/el-verktyg/arduino/arduino-tillbehor/rorelsedetektor-for-arduino-p87060) | 100 kr |
-| Server / Raspberry Pi to run TIG |  | - / 690 kr |
-| Philips hue led strip | [:link:(https://www.philips-hue.com/sv-se/p/hue-white-and-color-ambiance-lightstrip-plus-sockel-v4--2-meter/8718699703424)] | 900 kr |
-| ConBee | [:link:](https://www.kjell.com/se/produkter/smarta-hem/controllers/conbee-ii-zigbee-controller-for-usb-p51419) | 549 kr|
+| LoPy4                 | Computer to handle sensor | [:link:](https://pycom.io/product/lopy4/) | 380 kr |
+| Expansion Board 3.1   | Expansion board to Lopy4 so we can connect the sensor easily | [:link:](https://pycom.io/product/expansion-board-3-0/) | 170 kr |
+| Jumpwire              | Wire between lopy4 and sensor | [:link:](https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/delbar-kopplingskabel-40-pol-15-cm-hona-hona-p87075) | 80 kr |
+| RIP Motion sensors    | Motion sensor | [:link:](https://www.kjell.com/se/produkter/el-verktyg/arduino/arduino-tillbehor/rorelsedetektor-for-arduino-p87060) | 100 kr |
+| Server / Raspberry Pi to run TIG | Server to host Docker |  | - / 690 kr |
+| Philips hue led strip | Zigbee based led strip | [:link:](https://www.philips-hue.com/sv-se/p/hue-white-and-color-ambiance-lightstrip-plus-sockel-v4--2-meter/8718699703424)] | 900 kr |
+| ConBee | Zigbee gateway that can be connected to the server. Use this to send commands to the led strip | [:link:](https://www.kjell.com/se/produkter/smarta-hem/controllers/conbee-ii-zigbee-controller-for-usb-p51419) | 549 kr|
 
 Total price, with raspberry pi, 2869 kr. There are cheaper led strips available online, but i already had mine at home.
-
-ConBee is a USB stick ZigBee gateway, which we can plugin into our server and use to control Smart lights that use the ZigBee Protocol, which Philips Hue led strip does.
 
 
 
 ## Computer setup
 
-I used Atom as IDE because i didn't the Pymakr plugin to work in VSCode. Pymakr is used to send files to Lopy4 from the IDE. Before you can install Pymakr you need to install NodeJs. Before starting on the project you might need to update the firmware on the Lopy4 and expansion board. I didn't need to do that because mine was up-to-date when i bought it.
+I used Atom as IDE because i didn't get the Pymakr plugin to work in VSCode. Pymakr is used to send files to Lopy4 from the IDE. Before you can install Pymakr you need to install NodeJs. Before starting on the project you might need to update the firmware on the Lopy4 and expansion board. I didn't need to do that because mine was up-to-date when i bought it.
 
-I use Docker on a server with Debian as OS to host the TIG stack, here you can also use a Raspberry PI as a cheap alternative.
+I use Docker on a server with Debian as OS to host the TIG stack, Mosquitto, node-red, Home-assistant and Deconz, here you can also use a Raspberry PI as a cheap alternative.
 
 
 
