@@ -1,0 +1,110 @@
+version: '3.3'
+
+networks:
+    tig-net:
+        driver: bridge
+
+volumes:
+    tig-data:
+
+services:
+
+    hass:
+        container_name: hass
+        image: "ghcr.io/home-assistant/home-assistant:stable"
+        volumes:
+          - tig-data:/config
+        restart: unless-stopped
+        privileged: true
+        ports:
+            - "8123:8123"
+        networks:
+            - tig-net
+
+    deconz:
+        image: marthoc/deconz:amd64-test-ubuntu # newer versions contain a bug with permissions.becuase they use debian as base. They might fix in the future by changing to ubuntu base
+        container_name: deconz
+        networks:
+            - tig-net
+        restart: always
+        ports:
+            - "8013:80"
+        volumes:
+            - tig-data:/root/.local/share/dresden-elektronik/deCONZ
+        devices:
+            - /dev/ttyUSB0
+        environment:
+            - DECONZ_WEB_PORT=80
+            - DECONZ_WS_PORT=443
+            - DEBUG_INFO=1
+            - DEBUG_APS=0
+            - DEBUG_ZCL=0
+            - DEBUG_ZDP=0
+            - DEBUG_OTAU=0
+
+    influxdb:
+        image: influxdb:1.8.6
+        container_name: influxdb
+        ports:
+            - 8086:8086
+        environment:
+            INFLUXDB_HTTP_AUTH_ENABLED: "true"
+            INFLUXDB_DB: "iot"
+            INFLUXDB_ADMIN_USER: "iot"
+            INFLUXDB_ADMIN_PASSWORD: "password"
+        networks:
+            - tig-net
+        volumes:
+            - tig-data:/var/lib/influxdb
+
+    grafana:
+        image: grafana/grafana:7.5.9
+        container_name: grafana
+        ports:
+            - 3000:3000
+        environment:
+            GF_SECURITY_ADMIN_USER: iot
+            GF_SECURITY_ADMIN_PASSWORD: password
+        networks:
+            - tig-net
+        volumes:
+            - tig-data:/var/lib/grafana
+        restart: always
+
+    telegraf:
+        image: telegraf
+        depends_on:
+            - "influxdb"
+        environment:
+            HOST_NAME: "telegraf"
+            INFLUXDB_HOST: "influxdb"
+            INFLUXDB_PORT: "8086"
+            DATABASE: "iot"
+        volumes:
+            - ./telegraf.conf:/etc/telegraf/telegraf.conf
+        tty: true
+        networks:
+            - tig-net
+        privileged: true
+
+    node-red:
+        image: nodered/node-red:latest
+        environment:
+          - TZ=Europe/Amsterdam
+        ports:
+          - "1880:1880"
+        networks:
+          - tig-net
+        volumes:
+          - tig-data:/data
+
+    mosquitto:
+        container_name: mosquitto
+        image: eclipse-mosquitto
+        networks:
+            - tig-net
+        ports:
+          - "1883:1883"
+        volumes:
+          - tig-data:/mosquitto
+        restart: always
