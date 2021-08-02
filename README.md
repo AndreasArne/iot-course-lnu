@@ -22,7 +22,7 @@ I often wake up in the middle of the night and need to go pee but i can't turn o
 | Jumpwire              | Wire between lopy4 and sensor | [:link:](https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektroniklabb/delbar-kopplingskabel-40-pol-15-cm-hona-hona-p87075) | 80 kr |
 | RIP Motion sensors    | Motion sensor | [:link:](https://www.kjell.com/se/produkter/el-verktyg/arduino/arduino-tillbehor/rorelsedetektor-for-arduino-p87060) | 100 kr |
 | Server / Raspberry Pi to run TIG | Server to host Docker |  | - / 690 kr |
-| Philips hue led strip | Zigbee based led strip | [:link:](https://www.philips-hue.com/sv-se/p/hue-white-and-color-ambiance-lightstrip-plus-sockel-v4--2-meter/8718699703424)] | 900 kr |
+| Philips hue led strip | Zigbee based led strip | [:link:](https://www.philips-hue.com/sv-se/p/hue-white-and-color-ambiance-lightstrip-plus-sockel-v4--2-meter/8718699703424) | 900 kr |
 | ConBee | Zigbee gateway that can be connected to the server. Use this to send commands to the led strip | [:link:](https://www.kjell.com/se/produkter/smarta-hem/controllers/conbee-ii-zigbee-controller-for-usb-p51419) | 549 kr|
 
 Total price, with raspberry pi, 2869 kr. There are cheaper led strips available online, but i already had mine at home.
